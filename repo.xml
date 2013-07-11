@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+	<repo quality="experimental" status="unofficial">
+		<name>YeLee</name>
+		<description>yelee's overlay</description>
+		<homepage>http://github.com/YeLee/yelee-overlay</homepage>
+		<owner type="project">
+			<name>yelee</name>
+			<email>yelee@github.com</email>
+		</owner>
+		<source type="git">git://github.com/YeLee/yelee-overlay.git</source>
+	</repo>
+</repositories>
