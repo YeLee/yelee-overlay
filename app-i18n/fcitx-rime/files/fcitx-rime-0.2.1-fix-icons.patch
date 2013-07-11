@@ -20,6 +20,24 @@ From: Weng Xuetian <wengxt@gmail.com>
  static void FcitxRimeToggleSync(void* arg);
  static void FcitxRimeToggleDeploy(void* arg);
  static void FcitxRimeResetUI(void* arg);
+@@ -104,7 +107,7 @@
+         _("\xe2\x9f\xb2 Deploy"),
+         _("Deploy"),
+         FcitxRimeToggleDeploy,
+-        FcitxRimeGetDummy);
++        FcitxRimeGetDeployIcon);
+ 
+     FcitxUIRegisterComplexStatus(
+         instance,
+@@ -113,7 +116,7 @@
+         _("\xe2\x87\x85 Synchronize"),
+         _("Synchronize"),
+         FcitxRimeToggleSync,
+-        FcitxRimeGetDummy);
++        FcitxRimeGetSyncIcon);
+ 
+     FcitxUISetStatusVisable(instance, "rimeenzh", false);
+     FcitxUISetStatusVisable(instance, "rimesync", false);
 @@ -134,6 +137,7 @@
          RimeDestroySession(rime->session_id);
          rime->session_id = 0;
