@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	# dont build data resource here, already provided by app-i18n/rime-data
+	epatch "${FILESDIR}/${P}-fix-icons.patch"
 	sed -i -e 's|add_subdirectory(data)||' CMakeLists.txt || die
 }
 

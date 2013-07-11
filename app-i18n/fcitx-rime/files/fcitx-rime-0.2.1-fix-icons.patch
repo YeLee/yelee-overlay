@@ -1,0 +1,48 @@
+From: 8373cd27d15495aa4ffec073e0fbf2080c4ee91f Sun Jul 7  20:07:00 2013
+From: Weng Xuetian <wengxt@gmail.com>
+
+--- a/src/fcitx-rime.c
++++ b/src/fcitx-rime.c
+@@ -11,6 +11,7 @@
+ typedef struct _FcitxRime {
+     FcitxInstance* owner;
+     RimeSessionId session_id;
++    char* iconname;
+ } FcitxRime;
+ 
+ static void* FcitxRimeCreate(FcitxInstance* instance);
+@@ -134,6 +135,7 @@
+         RimeDestroySession(rime->session_id);
+         rime->session_id = 0;
+     }
++    fcitx_utils_free(rime->iconname);
+     RimeFinalize();
+ }
+ 
+@@ -398,6 +400,26 @@
+ 
+ const char* FcitxRimeGetDummy(void* arg)
+ {
++    FcitxRime* rime = (FcitxRime*) arg;
++    RimeStatus status = {0};
++    RIME_STRUCT_INIT(RimeStatus, status);
++    if (RimeGetStatus(rime->session_id, &status)) {
++        char* text = "";
++        if (status.is_disabled) {
++            text = "@rimedisabled";
++        } else if (status.is_ascii_mode) {
++            text = "@rimelatin";
++        } else if (status.schema_id) {
++            fcitx_utils_free(rime->iconname);
++            fcitx_utils_alloc_cat_str(rime->iconname, "@rimech", status.schema_id);
++            text = rime->iconname;
++        } else {
++            text = "@rimech";
++        }
++        RimeFreeStatus(&status);
++
++        return text;
++    }
+     return "";
+ }
+ 
