@@ -11,7 +11,16 @@ From: Weng Xuetian <wengxt@gmail.com>
  } FcitxRime;
  
  static void* FcitxRimeCreate(FcitxInstance* instance);
-@@ -134,6 +135,7 @@
+@@ -24,6 +25,8 @@
+ static INPUT_RETURN_VALUE FcitxRimeGetCandWords(void* arg);
+ static void FcitxRimeToggleEnZh(void* arg);
+ static const char* FcitxRimeGetDummy(void* arg);
++static const char* FcitxRimeGetDeployIcon(void *arg);
++static const char* FcitxRimeGetSyncIcon(void *arg);
+ static void FcitxRimeToggleSync(void* arg);
+ static void FcitxRimeToggleDeploy(void* arg);
+ static void FcitxRimeResetUI(void* arg);
+@@ -134,6 +137,7 @@
          RimeDestroySession(rime->session_id);
          rime->session_id = 0;
      }
@@ -19,7 +28,7 @@ From: Weng Xuetian <wengxt@gmail.com>
      RimeFinalize();
  }
  
-@@ -398,6 +400,26 @@
+@@ -398,9 +402,40 @@
  
  const char* FcitxRimeGetDummy(void* arg)
  {
@@ -34,7 +43,7 @@ From: Weng Xuetian <wengxt@gmail.com>
 +            text = "@rimelatin";
 +        } else if (status.schema_id) {
 +            fcitx_utils_free(rime->iconname);
-+            fcitx_utils_alloc_cat_str(rime->iconname, "@rimech", status.schema_id);
++            fcitx_utils_alloc_cat_str(rime->iconname, "@rimech-", status.schema_id);
 +            text = rime->iconname;
 +        } else {
 +            text = "@rimech";
@@ -45,4 +54,18 @@ From: Weng Xuetian <wengxt@gmail.com>
 +    }
      return "";
  }
+ 
++static const char* FcitxRimeGetDeployIcon(void *arg)
++{
++    return "rimedeploy";
++}
++
++static const char* FcitxRimeGetSyncIcon(void *arg)
++{
++    return "rimesync";
++}
++
++
+ void FcitxRimeToggleEnZh(void* arg)
+ {
  
