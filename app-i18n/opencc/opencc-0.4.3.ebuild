@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit cmake-utils multilib eutils
 
@@ -17,12 +17,9 @@ IUSE="+nls static-libs"
 
 DEPEND="nls? ( sys-devel/gettext )"
 RDEPEND="nls? ( virtual/libintl )"
-RESTRICT="mirror"
 
-src_unpack() {
-	unpack ${A}
-	mv -v ${WORKDIR}/OpenCC-ver.${PV} ${S} || die
-}
+DOCS="AUTHORS NEWS.md README.md"
+S=${WORKDIR}/OpenCC-ver.${PV}
 
 src_prepare() {
 	sed -i \
@@ -40,10 +37,6 @@ src_configure() {
 }
 
 src_install() {
-	newdoc NEWS.md ChangeLog
-	newdoc README.md README
-	dodoc AUTHORS
-
 	cmake-utils_src_install
 
 	use static-libs || find "${ED}" -name '*.la' -o -name '*.a' -exec rm {} +
