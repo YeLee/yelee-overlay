@@ -2,7 +2,7 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
 	<repo quality="experimental" status="unofficial">
-		<name>YeLee</name>
+		<name>yelee-overlay</name>
 		<description>yelee's overlay</description>
 		<homepage>http://github.com/YeLee/yelee-overlay</homepage>
 		<owner type="project">

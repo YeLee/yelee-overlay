@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+X +autostart +cairo +dbus debug +enchant gtk gtk3 icu introspection lua
-nls opencc +pango qt4 snooper static-libs +table test +xml"
+nls opencc +pango qt4 static-libs +table test +xml"
 RESTRICT="mirror"
 
 RDEPEND="
@@ -80,7 +80,9 @@ src_configure() {
 		$(cmake-utils_use_enable debug DEBUG)
 		$(cmake-utils_use_enable enchant ENCHANT)
 		$(cmake-utils_use_enable gtk GTK2_IM_MODULE)
+		$(cmake-utils_use_enable gtk SNOOPER)
 		$(cmake-utils_use_enable gtk3 GTK3_IM_MODULE)
+		$(cmake-utils_use_enable gtk3 SNOOPER)
 		$(cmake-utils_use_enable icu ICU)
 		$(cmake-utils_use_enable introspection GIR)
 		$(cmake-utils_use_enable lua LUA)
@@ -90,7 +92,6 @@ src_configure() {
 		$(cmake-utils_use_enable qt4 QT)
 		$(cmake-utils_use_enable qt4 QT_IM_MODULE)
 		$(cmake-utils_use_enable qt4 QT_GUI)
-		$(cmake-utils_use_enable snooper SNOOPER)
 		$(cmake-utils_use_enable static-libs STATIC)
 		$(cmake-utils_use_enable table TABLE)
 		$(cmake-utils_use_enable test TEST)

@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	# dont build data resource here, already provided by app-i18n/rime-data
 	sed -i -e 's|add_subdirectory(data)||' CMakeLists.txt || die
+	epatch "${FILESDIR}/${P}-setup-logging.patch"
+	epatch_user
 }
 
 src_configure() {
