@@ -1,0 +1,13 @@
+--- a/src/fcitx-rime.c
++++ b/src/fcitx-rime.c
+@@ -475,6 +475,10 @@
+ static const char* FcitxRimeGetIMIcon(void* arg)
+ {
+     FcitxRime* rime = (FcitxRime*) arg;
++    if (!RimeFindSession(rime->session_id)) {
++        RimeCleanupAllSessions();
++        rime->session_id = RimeCreateSession();
++    }
+     RimeStatus status = {0};
+     RIME_STRUCT_INIT(RimeStatus, status);
+     if (RimeGetStatus(rime->session_id, &status)) {

@@ -26,6 +26,8 @@ src_prepare() {
 	# dont build data resource here, already provided by app-i18n/rime-data
 	sed -i -e 's|add_subdirectory(data)||' CMakeLists.txt || die
 	epatch "${FILESDIR}/${P}-setup-logging.patch"
+	epatch "${FILESDIR}/${P}-new-stat-and-menu.patch"
+	epatch "${FILESDIR}/${P}-fix-Invalid-sessionid.patch"
 	epatch_user
 }
 
