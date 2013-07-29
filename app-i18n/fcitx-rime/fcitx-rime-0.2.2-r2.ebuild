@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	sed 's=\(hicolor\/48x48\/\)apps=\1status=g' data/CMakeLists.txt || die
+	sed -i -e 's=\(48x48\/\)apps=\1status=g' data/CMakeLists.txt || die
 	local mycmakeargs=(
 		-DRIME_DATA_DIR=/usr/share/rime-data
 	)
