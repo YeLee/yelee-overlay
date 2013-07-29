@@ -1,18 +1,28 @@
 --- a/src/fcitx-rime.c
 +++ b/src/fcitx-rime.c
-@@ -270,6 +270,9 @@
+@@ -270,6 +270,16 @@
  
  void FcitxRimeUpdateStatus(FcitxRime* rime)
  {
++    if (RimeIsMaintenancing()) {
++        FcitxUISetStatusString(rime->owner, "rime-enzh", "\xe2\x8c\x9b", "\xe2\x8c\x9b");
++        FcitxUISetStatusString(rime->owner, "rime-chts", _("Traditional Chinese"),
++                               _("Traditional Chinese"));
++        return;
++    }
 +    if (!RimeFindSession(rime->session_id)) {
 +        rime->session_id = RimeCreateSession();
 +    }
++
      RimeStatus status = {0};
      RIME_STRUCT_INIT(RimeStatus, status);
      if (RimeGetStatus(rime->session_id, &status)) {
-@@ -530,6 +533,9 @@
+@@ -529,7 +539,12 @@
+ 
  static const char* FcitxRimeGetIMIcon(void* arg)
  {
++    if (RimeIsMaintenancing())
++        return "@rime-disabled";
      FcitxRime* rime = (FcitxRime*) arg;
 +    if (!RimeFindSession(rime->session_id)) {
 +        rime->session_id = RimeCreateSession();
@@ -20,3 +30,22 @@
      RimeStatus status = {0};
      RIME_STRUCT_INIT(RimeStatus, status);
      if (RimeGetStatus(rime->session_id, &status)) {
+@@ -564,6 +579,8 @@
+ 
+ static const char* FcitxRimeGetChtsIcon(void *arg)
+ {
++    if (RimeIsMaintenancing())
++        return "rime-chtrad";
+     FcitxRime* rime = (FcitxRime*) arg;
+     if (rime->session_id) {
+         if(RimeGetOption(rime->session_id, "simplification")) {
+@@ -606,7 +623,9 @@
+ 
+ void FcitxRimeToggleSync(void* arg)
+ {
++    FcitxRime* rime = (FcitxRime*) arg;
+     RimeSyncUserData();
++    FcitxRimeUpdateStatus(rime);
+ }
+ 
+ void FcitxRimeToggleDeploy(void* arg)
