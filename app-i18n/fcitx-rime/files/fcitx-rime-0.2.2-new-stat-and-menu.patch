@@ -12,10 +12,10 @@
  static const char* FcitxRimeGetIMIcon(void* arg);
  static const char* FcitxRimeGetDeployIcon(void *arg);
  static const char* FcitxRimeGetSyncIcon(void *arg);
-+static const char* FcitxRimeGetChtsIcon(void *arg);
++static const char* FcitxRimeGetZhconvIcon(void *arg);
  static void FcitxRimeToggleSync(void* arg);
  static void FcitxRimeToggleDeploy(void* arg);
-+static void FcitxRimeToggleChts(void* arg);
++static void FcitxRimeToggleZhconv(void* arg);
  static void FcitxRimeResetUI(void* arg);
  static void FcitxRimeUpdateStatus(FcitxRime* rime);
 +static boolean FcitxRimeSchemaMenuAction(FcitxUIMenu *menu, int index);
@@ -30,16 +30,16 @@
 +    FcitxUIRegisterComplexStatus(
 +        instance,
 +        rime,
-+        "rime-chts",
++        "rime-zhconv",
 +        "",
 +        "",
-+        FcitxRimeToggleChts,
-+        FcitxRimeGetChtsIcon);
++        FcitxRimeToggleZhconv,
++        FcitxRimeGetZhconvIcon);
 +
      FcitxUISetStatusVisable(instance, "rime-enzh", false);
      FcitxUISetStatusVisable(instance, "rime-sync", false);
      FcitxUISetStatusVisable(instance, "rime-deploy", false);
-+    FcitxUISetStatusVisable(instance, "rime-chts", false);
++    FcitxUISetStatusVisable(instance, "rime-zhconv", false);
      FcitxIMEventHook hk;
      hk.arg = rime;
      hk.func = FcitxRimeResetUI;
@@ -71,14 +71,14 @@
          } else {
              text = "中";
          }
-+        char* chtstatus = "";
++        char* zhstatus = "";
 +        if (status.is_simplified) {
-+            chtstatus = _("Simplified Chinese");
++            zhstatus = _("Simplified Chinese");
 +        } else {
-+            chtstatus = _("Traditional Chinese");
++            zhstatus = _("Traditional Chinese");
 +        }
          FcitxUISetStatusString(rime->owner, "rime-enzh", text, text);
-+        FcitxUISetStatusString(rime->owner, "rime-chts", chtstatus, chtstatus);
++        FcitxUISetStatusString(rime->owner, "rime-zhconv", zhstatus, zhstatus);
          RimeFreeStatus(&status);
      }
  }
@@ -129,14 +129,14 @@
      return "rime-sync";
  }
  
-+static const char* FcitxRimeGetChtsIcon(void *arg)
++static const char* FcitxRimeGetZhconvIcon(void *arg)
 +{
 +    FcitxRime* rime = (FcitxRime*) arg;
 +    if (rime->session_id) {
 +        if(RimeGetOption(rime->session_id, "simplification")) {
-+            return "rime-chsimp";
++            return "rime-zh-simp";
 +        } else {
-+            return "rime-chtrad";
++            return "rime-zh-trad";
 +        }
 +    }
 +    return "";
@@ -159,7 +159,7 @@
      FcitxUISetStatusVisable(instance, "rime-enzh", visible);
      FcitxUISetStatusVisable(instance, "rime-sync", visible);
      FcitxUISetStatusVisable(instance, "rime-deploy", visible);
-+    FcitxUISetStatusVisable(instance, "rime-chts", visible);
++    FcitxUISetStatusVisable(instance, "rime-zhconv", visible);
  }
  
  void FcitxRimeToggleSync(void* arg)
@@ -168,7 +168,7 @@
      FcitxRimeUpdateStatus(rime);
  }
 +
-+void FcitxRimeToggleChts(void* arg)
++void FcitxRimeToggleZhconv(void* arg)
 +{
 +    FcitxRime* rime = (FcitxRime*) arg;
 +    if (rime->session_id) {

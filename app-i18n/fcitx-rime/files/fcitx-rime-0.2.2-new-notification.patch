@@ -22,7 +22,7 @@
 +    const char* staticon = NULL;
 +
 +    if (!strcmp(message_type, "deploy")) {
-+        staticon = "fcitx-rime-deploy";
++        //staticon = "fcitx-rime-deploy";
 +        if (!strcmp(message_value, "start")) {
 +            message = _("Rime is under maintenance ...");
 +        } else if (!strcmp(message_value, "success")) {
@@ -36,10 +36,10 @@
 +    if (!strcmp(message_type, "option")) {
 +        if (!strcmp(message_value, "ascii_mode")) {
 +            message = _("Switch to English mode.");
-+            staticon = "rime-latin";
++            //staticon = "rime-latin";
 +    } else if (!strcmp(message_value, "!ascii_mode")) {
 +            message = _("Switch to Chinese mode.");
-+            staticon = "rime-im";
++            //staticon = "rime-im";
 +        }
 +    }
 +

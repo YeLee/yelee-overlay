@@ -27,14 +27,14 @@
      if (RimeGetStatus(rime->session_id, &status)) {
 @@ -548,7 +558,12 @@
  
- static const char* FcitxRimeGetChtsIcon(void *arg)
+ static const char* FcitxRimeGetZhconvIcon(void *arg)
  {
 +    if (RimeIsMaintenancing())
-+        return "rime-chtrad";
++        return "rime-zh-trad";
      FcitxRime* rime = (FcitxRime*) arg;
 +    if (!RimeFindSession(rime->session_id)) {
 +        rime->session_id = RimeCreateSession();
 +    }
      if (rime->session_id) {
          if(RimeGetOption(rime->session_id, "simplification")) {
-             return "rime-chsimp";
+             return "rime-zh-simp";
