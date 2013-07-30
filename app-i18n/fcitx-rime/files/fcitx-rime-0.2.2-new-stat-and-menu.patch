@@ -45,7 +45,7 @@
      hk.func = FcitxRimeResetUI;
  
 +    FcitxMenuInit(&rime->schemamenu);
-+    rime->schemamenu.name = strdup(_("Rime SchemaList"));
++    rime->schemamenu.name = strdup(_("Rime Schema List"));
 +    rime->schemamenu.candStatusBind = strdup("rime");
 +    rime->schemamenu.MenuAction = FcitxRimeSchemaMenuAction;
 +    rime->schemamenu.UpdateMenu = FcitxRimeSchemaMenuUpdate;

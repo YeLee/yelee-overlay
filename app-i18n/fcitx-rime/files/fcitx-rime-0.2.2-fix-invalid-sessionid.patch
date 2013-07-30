@@ -17,7 +17,7 @@
  static const char* FcitxRimeGetIMIcon(void* arg)
  {
 +    if (RimeIsMaintenancing())
-+        return "@rime-disabled";
++        return "rime-disabled";
      FcitxRime* rime = (FcitxRime*) arg;
 +    if (!RimeFindSession(rime->session_id)) {
 +        rime->session_id = RimeCreateSession();
@@ -30,7 +30,7 @@
  static const char* FcitxRimeGetChtsIcon(void *arg)
  {
 +    if (RimeIsMaintenancing())
-+        return "@rime-chtrad";
++        return "rime-chtrad";
      FcitxRime* rime = (FcitxRime*) arg;
 +    if (!RimeFindSession(rime->session_id)) {
 +        rime->session_id = RimeCreateSession();
