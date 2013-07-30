@@ -27,6 +27,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-new-stat-and-menu.patch"
 	epatch "${FILESDIR}/${P}-new-notification.patch"
 	epatch "${FILESDIR}/${P}-fix-invalid-sessionid.patch"
+	epatch "${FILESDIR}/zh_po.patch"
 	epatch_user
 }
 

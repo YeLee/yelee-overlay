@@ -8,7 +8,7 @@
  #include <libintl.h>
  #include <rime_api.h>
  
-@@ -46,6 +47,58 @@
+@@ -46,6 +47,42 @@
  FCITX_EXPORT_API
  int ABI_VERSION = FCITX_ABI_VERSION;
  
@@ -18,7 +18,7 @@
 +                                  const char* message_value)
 +{
 +    FcitxRime* rime = (FcitxRime*) context_object;
-+    char* message = NULL;
++    const char* message = NULL;
 +    const char* staticon = NULL;
 +
 +    if (!strcmp(message_type, "deploy")) {
@@ -37,37 +37,21 @@
 +        if (!strcmp(message_value, "ascii_mode")) {
 +            message = _("Switch to English mode.");
 +            staticon = "rime-latin";
-+        } else if (!strcmp(message_value, "full_shape")) {
-+            message = _("Switch to full-width mode.");
-+            staticon = "fcitx-fullwidth-active";
-+        } else if (!strcmp(message_value, "!full_shape")) {
-+            message = _("Switch to half-width mode.");
-+            staticon = "fcitx-fullwidth-inactive";
-+        } else if (!strcmp(message_value, "simplification")) {
-+            message = _("Enable Traditional Chinese to Simplified Chinese.");
-+        } else if (!strcmp(message_value, "!simplification")) {
-+            message = _("Disable Traditional Chinese to Simplified Chinese.");
-+       }
-+    }
-+
-+    if (!strcmp(message_type, "schema")) {
-+        fcitx_utils_alloc_cat_str(message, _("Selected schema: "),
-+                                  message_value);
-+        staticon = "rime-im";
++    } else if (!strcmp(message_value, "!ascii_mode")) {
++            message = _("Switch to Chinese mode.");
++            staticon = "rime-im";
++        }
 +    }
 +
 +    if (message)
 +        FcitxFreeDesktopNotifyShowAddonTip(rime->owner, "fcitx-rime",
 +                                           staticon, _("Rime"), message);
-+
-+    if (!strcmp(message_type, "schema"))
-+        fcitx_utils_free(message);
 +}
 +
  static void FcitxRimeStart(FcitxRime* rime, boolean fullcheck) {
  
      char* user_path = NULL;
-@@ -56,6 +109,8 @@
+@@ -56,6 +93,8 @@
      //char* shared_data_dir = fcitx_utils_get_fcitx_path_with_filename("pkgdatadir", "rime");
      const char* shared_data_dir = RIME_DATA_DIR;
  
