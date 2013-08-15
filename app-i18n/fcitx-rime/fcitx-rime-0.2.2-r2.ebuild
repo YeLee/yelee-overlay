@@ -18,7 +18,6 @@ RESTRICT="mirror"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8.1
 	app-i18n/librime
-	app-i18n/rime-data
 	x11-libs/libnotify"
 DEPEND="${RDEPEND}"
 
