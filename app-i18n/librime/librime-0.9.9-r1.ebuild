@@ -28,6 +28,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}"
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}-build-data-fix.patch"
+	epatch_user
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_build static-libs STATIC)

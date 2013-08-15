@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,9 +111,7 @@
+   install(FILES ${PROJECT_BINARY_DIR}/rime.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
+   install(FILES cmake/RimeConfig.cmake DESTINATION share/cmake/rime)
+   if(BUILD_DATA)
+-    install(FILES ${PROJECT_SOURCE_DIR}/data/default.yaml DESTINATION ${pkgdatadir})
+-    install(FILES ${PROJECT_SOURCE_DIR}/data/symbols.yaml DESTINATION ${pkgdatadir})
+-    install(FILES ${PROJECT_SOURCE_DIR}/data/essay.kct DESTINATION ${pkgdatadir})
++	install(DIRECTORY ${PROJECT_SOURCE_DIR}/data/minimal/ DESTINATION ${pkgdatadir})
+     file(GLOB preset_schema ${PROJECT_SOURCE_DIR}/data/preset/*.yaml)
+     install(FILES ${preset_schema} DESTINATION ${pkgdatadir})
+     file(GLOB supplement_schema ${PROJECT_SOURCE_DIR}/data/supplement/*.yaml)
