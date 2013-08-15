@@ -17,8 +17,11 @@ IUSE=""
 RESTRICT="mirror"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8.1
-	app-i18n/librime
-	x11-libs/libnotify"
+	x11-libs/libnotify
+	|| (
+		app-i18n/librime[minimal]
+		app-i18n/rime-data
+		)"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

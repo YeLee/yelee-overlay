@@ -21,8 +21,7 @@ RDEPEND="app-i18n/opencc
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
 	sys-libs/zlib
-	x11-proto/xproto
-	!minimal? ( app-i18n/rime-data )"
+	x11-proto/xproto"
 DEPEND="${RDEPEND}
 	minimal? ( !app-i18n/rime-data )"
 
