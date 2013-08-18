@@ -1,0 +1,114 @@
+--- a/src/callback.c
++++ b/src/callback.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <opencc/opencc.h>
+ 
+ static void set_selection_bound(GtkTextBuffer *buffer, gint start, gint end)
+ {
+@@ -371,3 +372,40 @@
+ 	gtk_widget_show(about);
+ #endif
+ }
++
++void opencc_callback( GtkWidget *widget, guint action, gpointer data)
++{
++	const static char* cfgfile[12] = { "zhs2zht.ini", "zhs2zhtw_p.ini",
++		"zhs2zhtw_v.ini", "zhs2zhtw_vp.ini",
++		"zht2zhs.ini", "zht2zhtw_p.ini",
++		"zht2zhtw_v.ini", "zht2zhtw_vp.ini",
++		"zhtw2zhcn_s.ini", "zhtw2zhcn_t.ini",
++		"zhtw2zhs.ini", "zhtw2zht.ini" };
++	opencc_t od = opencc_open(cfgfile[action]);
++	GtkTextIter start = {0}, end = {0};
++	char* context = NULL;
++	char* result = NULL;
++
++	if (od == (opencc_t) -1) {
++		fprintf(stderr, N_("Failed to Initialization OpenCC!\n"));
++		return;
++	}
++
++	gtk_text_buffer_get_bounds(pub->mw->buffer, &start, &end);
++	context = gtk_text_buffer_get_text(
++			pub->mw->buffer, &start, &end, FALSE);
++	if (strlen(context) < 1) {
++		opencc_close(od);
++		return;
++	}
++
++	result = opencc_convert_utf8(od, context, -1);
++	if (strlen(result) >= 1) {
++		gtk_text_buffer_set_text(pub->mw->buffer, result, -1);
++	}
++
++	opencc_convert_utf8_free(result);
++	opencc_close(od);
++	return;
++}
++
+--- a/src/callback.h
++++ b/src/callback.h
+@@ -46,5 +46,6 @@
+ void on_option_always_on_top(void);
+ void on_option_auto_indent(void);
+ void on_help_about(void);
++void opencc_callback(GtkWidget *widget, guint action, gpointer data);
+ 
+ #endif /* _CALLBACK_H */
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -100,6 +100,32 @@
+ 		NULL, 0, "<Separator>" },
+ 	{ N_("/Options/_Auto Indent"), NULL,
+ 		G_CALLBACK(on_option_auto_indent), 0, "<CheckItem>" },
++	{ N_("/Open_CC"), NULL,
++		NULL, 0, "<Branch>" },
++	{ N_("/OpenCC/Simplified to Traditional"), NULL,
++		G_CALLBACK(opencc_callback), 0 },
++	{ N_("/OpenCC/Simplified to Taiwan (only phrases)"), NULL,
++		G_CALLBACK(opencc_callback), 1 },
++	{ N_("/OpenCC/Simplified to Taiwan (only variants)"), NULL,
++		G_CALLBACK(opencc_callback), 2 },
++	{ N_("/OpenCC/Simplified to Taiwan"), NULL,
++		G_CALLBACK(opencc_callback), 3 },
++	{ N_("/OpenCC/Traditional to Simplified"), NULL,
++		G_CALLBACK(opencc_callback), 4 },
++	{ N_("/OpenCC/Traditional to Taiwan (only phrases)"), NULL,
++		G_CALLBACK(opencc_callback), 5 },
++	{ N_("/OpenCC/Traditional to Taiwan (only variants)"), NULL,
++		G_CALLBACK(opencc_callback), 6 },
++	{ N_("/OpenCC/Traditional to Taiwan"), NULL,
++		G_CALLBACK(opencc_callback), 7 },
++	{ N_("/OpenCC/Taiwan to Mainland China (Simplified)"), NULL,
++		G_CALLBACK(opencc_callback), 8 },
++	{ N_("/OpenCC/Taiwan to Mainland China (Traditional)"), NULL,
++		G_CALLBACK(opencc_callback), 9 },
++	{ N_("/OpenCC/Taiwan to Simplified"), NULL,
++		G_CALLBACK(opencc_callback), 10 },
++	{ N_("/OpenCC/Taiwan to Traditional"), NULL,
++		G_CALLBACK(opencc_callback), 11 },
+ 	{ N_("/_Help"), NULL,
+ 		NULL, 0, "<Branch>" },
+ 	{ N_("/Help/_About"), NULL,
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -28,4 +28,4 @@
+ 	i18n.h
+ 
+ leafpad_CFLAGS  = $(GTK_CFLAGS) $(GNOMEPRINT_CFLAGS)
+-leafpad_LDADD   = $(GTK_LIBS) $(INTLLIBS) $(GNOMEPRINT_LIBS)
++leafpad_LDADD   = $(GTK_LIBS) $(INTLLIBS) $(GNOMEPRINT_LIBS) -lopencc
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -218,7 +218,7 @@
+ 	i18n.h
+ 
+ leafpad_CFLAGS = $(GTK_CFLAGS) $(GNOMEPRINT_CFLAGS)
+-leafpad_LDADD = $(GTK_LIBS) $(INTLLIBS) $(GNOMEPRINT_LIBS)
++leafpad_LDADD = $(GTK_LIBS) $(INTLLIBS) $(GNOMEPRINT_LIBS) -lopencc
+ all: all-am
+ 
+ .SUFFIXES:

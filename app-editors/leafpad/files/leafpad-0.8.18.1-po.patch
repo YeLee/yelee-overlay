@@ -1,0 +1,96 @@
+--- a/po/zh_CN.po
++++ b/po/zh_CN.po
+@@ -296,3 +296,45 @@
+ #: ../data/leafpad.desktop.in.h:1
+ msgid "Simple text editor"
+ msgstr "简易文字编辑器"
++
++msgid "Failed to Initialization OpenCC!\n"
++msgstr "无法初始化OpenCC！\n"
++
++msgid "/Open_CC"
++msgstr "/开放中文转换(_C)"
++
++msgid "/OpenCC/Simplified to Traditional"
++msgstr "/开放中文转换/简体到繁体"
++
++msgid "/OpenCC/Traditional to Simplified"
++msgstr "/开放中文转换/繁体到简体"
++
++msgid "/OpenCC/Simplified to Taiwan"
++msgstr "/开放中文转换/简体到台湾标准"
++
++msgid "/OpenCC/Simplified to Taiwan (only variants)"
++msgstr "/开放中文转换/简体到台湾标准(只转换异体字)"
++
++msgid "/OpenCC/Simplified to Taiwan (only phrases)"
++msgstr "/开放中文转换/简体到台湾标准(只转换常用词汇)"
++
++msgid "/OpenCC/Traditional to Taiwan"
++msgstr "/开放中文转换/繁体到台湾标准"
++
++msgid "/OpenCC/Traditional to Taiwan (only variants)"
++msgstr "/开放中文转换/繁体到台湾标准(只转换异体字)"
++
++msgid "/OpenCC/Traditional to Taiwan (only phrases)"
++msgstr "/开放中文转换/繁体到台湾标准(只转换常用词汇)"
++
++msgid "/OpenCC/Taiwan to Traditional"
++msgstr "/开放中文转换/台湾标准到繁体"
++
++msgid "/OpenCC/Taiwan to Simplified"
++msgstr "/开放中文转换/台湾标准到简体"
++
++msgid "/OpenCC/Taiwan to Mainland China (Simplified)"
++msgstr "/开放中文转换/台湾标准到中国大陆标准(简体)"
++
++msgid "/OpenCC/Taiwan to Mainland China (Traditional)"
++msgstr "/开放中文转换/台湾标准到中国大陆标准(繁体)"
+--- a/po/zh_TW.po
++++ b/po/zh_TW.po
+@@ -297,3 +297,45 @@
+ #: ../data/leafpad.desktop.in.h:1
+ msgid "Simple text editor"
+ msgstr "簡易文字編輯器"
++
++msgid "Failed to Initialization OpenCC!\n"
++msgstr "无法初始化OpenCC！\n"
++
++msgid "/Open_CC"
++msgstr "/開放中文轉換(_C)"
++
++msgid "/OpenCC/Simplified to Traditional"
++msgstr "/開放中文轉換/簡體到繁體"
++
++msgid "/OpenCC/Traditional to Simplified"
++msgstr "/開放中文轉換/繁體到簡體"
++
++msgid "/OpenCC/Simplified to Taiwan"
++msgstr "/開放中文轉換/簡體到臺灣標準"
++
++msgid "/OpenCC/Simplified to Taiwan (only variants)"
++msgstr "/開放中文轉換/簡體到臺灣標準(只轉換異體字)"
++
++msgid "/OpenCC/Simplified to Taiwan (only phrases)"
++msgstr "/開放中文轉換/簡體到臺灣標準(只轉換常用詞彙)"
++
++msgid "/OpenCC/Traditional to Taiwan"
++msgstr "/開放中文轉換/繁體到臺灣標準"
++
++msgid "/OpenCC/Traditional to Taiwan (only variants)"
++msgstr "/開放中文轉換/繁體到臺灣標準(只轉換異體字)"
++
++msgid "/OpenCC/Traditional to Taiwan (only phrases)"
++msgstr "/開放中文轉換/繁體到臺灣標準(只轉換常用詞彙)"
++
++msgid "/OpenCC/Taiwan to Traditional"
++msgstr "/開放中文轉換/臺灣標準到繁體"
++
++msgid "/OpenCC/Taiwan to Simplified"
++msgstr "/開放中文轉換/臺灣標準到簡體"
++
++msgid "/OpenCC/Taiwan to Mainland China (Simplified)"
++msgstr "/開放中文轉換/臺灣標準到中國大陸標準(簡體)"
++
++msgid "/OpenCC/Taiwan to Mainland China (Traditional)"
++msgstr "/開放中文轉換/臺灣標準到中國大陸標準(繁體)"
