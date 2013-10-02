@@ -44,8 +44,8 @@ RDEPEND="
 	lua? ( dev-lang/lua )
 	opencc? ( app-i18n/opencc )
 	qt4? (
-		dev-qt/qtgui:4[dbus(+),glib]
 		dev-qt/qtdbus:4
+		dev-qt/qtgui:4[glib]
 	)
 	xml? (
 		app-text/iso-codes
