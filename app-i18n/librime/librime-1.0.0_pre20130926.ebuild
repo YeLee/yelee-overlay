@@ -6,14 +6,16 @@ EAPI=5
 
 inherit cmake-utils multilib
 
+TREE_VER="5bff4e8353947cdaf1623e3cf672d1d6add933a1"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
-SRC_URI="http://rimeime.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs minimal"
+S=${WORKDIR}/${PN}-${TREE_VER}
 
 RDEPEND="app-i18n/opencc
 	dev-cpp/glog
@@ -28,7 +30,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-build-data-fix.patch"
+	epatch "${FILESDIR}/${PN}-0.9.9-build-data-fix.patch"
 	epatch_user
 }
 
