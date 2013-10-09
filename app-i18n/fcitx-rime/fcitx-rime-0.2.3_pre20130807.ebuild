@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.2.2-r1-fix-invalid-sessionid.patch"
-	epatch "${FILESDIR}/${PN}-0.2.2-r1-new-stat.patch"
 	epatch_user
 }
 
