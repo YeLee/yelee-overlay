@@ -27,8 +27,6 @@ RDEPEND="app-i18n/opencc
 DEPEND="${RDEPEND}
 	minimal? ( !app-i18n/rime-data )"
 
-S="${WORKDIR}/${PN}"
-
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.9.9-build-data-fix.patch"
 	epatch_user
