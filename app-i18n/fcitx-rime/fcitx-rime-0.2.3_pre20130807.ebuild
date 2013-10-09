@@ -6,9 +6,11 @@ EAPI=5
 
 inherit cmake-utils
 
+TREE_VER="1110fa7e6c9225e01084f686af1a19ffc45bc2c0"
 DESCRIPTION="Rime support for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://download.fcitx-im.org/${PN}/${P}.tar.xz"
+SRC_URI="https://codeload.github.com/fcitx/fcitx-rime/zip/${TREE_VER} -> ${P}.zip"
+S=${WORKDIR}/${PN}-${TREE_VER}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,11 +27,8 @@ RDEPEND=">=app-i18n/fcitx-4.2.8.1
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-setup-logging.patch"
-	epatch "${FILESDIR}/${P}-new-stat-and-menu.patch"
-	epatch "${FILESDIR}/${P}-new-notification.patch"
-	epatch "${FILESDIR}/${P}-fix-invalid-sessionid.patch"
-	epatch "${FILESDIR}/zh_po.patch"
+	epatch "${FILESDIR}/${PN}-0.2.2-r1-fix-invalid-sessionid.patch"
+	epatch "${FILESDIR}/${PN}-0.2.2-r1-new-stat.patch"
 	epatch_user
 }
 

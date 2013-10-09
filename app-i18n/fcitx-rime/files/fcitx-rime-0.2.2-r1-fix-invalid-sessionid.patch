@@ -1,0 +1,22 @@
+--- a/src/fcitx-rime.c
++++ b/src/fcitx-rime.c
+@@ -213,6 +213,7 @@
+ 
+ void FcitxRimeUpdateStatus(FcitxRime* rime)
+ {
++    if (RimeIsMaintenancing()) return;
+     if (!RimeFindSession(rime->session_id)) {
+         rime->session_id = RimeCreateSession();
+     }
+@@ -432,7 +433,11 @@
+ 
+ static const char* FcitxRimeGetIMIcon(void* arg)
+ {
++    if (RimeIsMaintenancing()) return "rime-disabled";
+     FcitxRime* rime = (FcitxRime*) arg;
++    if (!RimeFindSession(rime->session_id)) {
++        rime->session_id = RimeCreateSession();
++    }
+     RimeStatus status = {0};
+     RIME_STRUCT_INIT(RimeStatus, status);
+     if (RimeGetStatus(rime->session_id, &status)) {
