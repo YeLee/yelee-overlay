@@ -67,7 +67,6 @@ src_prepare() {
 	environments, such as Gnome, KDE, LXDE, Razor-qt and Xfce. If you use
 	~/.xinitrc to configure your desktop, make sure to include the fcitx
 	command to start it."
-	epatch "${FILESDIR}/${PN}-4.2.8-adv-chttrans.patch"
 	epatch_user
 }
 
