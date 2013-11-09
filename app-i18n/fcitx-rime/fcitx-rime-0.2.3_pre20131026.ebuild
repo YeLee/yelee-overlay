@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-TREE_VER="1110fa7e6c9225e01084f686af1a19ffc45bc2c0"
+TREE_VER="f20061c2d3862b9beff4834745013cd678133fba"
 DESCRIPTION="Rime support for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://codeload.github.com/fcitx/fcitx-rime/zip/${TREE_VER} -> ${P}.zip"
