@@ -1,0 +1,71 @@
+--- a/src/fcitx-rime.c
++++ b/src/fcitx-rime.c
+@@ -77,7 +77,7 @@
+ 
+     RimeSetNotificationHandler(FcitxRimeNotificationHandler, rime);
+ 
+-    RimeTraits fcitx_rime_traits;
++    RIME_STRUCT(RimeTraits, fcitx_rime_traits);
+     fcitx_rime_traits.shared_data_dir = shared_data_dir;
+     fcitx_rime_traits.user_data_dir = user_path;
+     fcitx_rime_traits.distribution_name = "Rime";
+@@ -217,8 +217,7 @@
+     if (!RimeFindSession(rime->session_id)) {
+         rime->session_id = RimeCreateSession();
+     }
+-    RimeStatus status = {0};
+-    RIME_STRUCT_INIT(RimeStatus, status);
++    RIME_STRUCT(RimeStatus, status);
+     if (RimeGetStatus(rime->session_id, &status)) {
+         char* text = "";
+         if (status.is_disabled) {
+@@ -285,16 +284,16 @@
+ 
+ INPUT_RETURN_VALUE FcitxRimeGetCandWord(void* arg, FcitxCandidateWord* candWord)
+ {
+-    RimeContext context = {0};
+     FcitxRime *rime = (FcitxRime *)arg;
+-    RIME_STRUCT_INIT(RimeContext, context);
++    RIME_STRUCT(RimeContext, context);
+     INPUT_RETURN_VALUE retVal = IRV_TO_PROCESS;
+     if (RimeGetContext(rime->session_id, &context)) {
+         if (context.menu.num_candidates)
+         {
+             int i = *(int*) candWord->priv;
+             const char* digit = DIGIT_STR_CHOOSE;
+-            int num_select_keys = strlen(context.menu.select_keys);
++            int num_select_keys = context.menu.select_keys ?
++                strlen(context.menu.select_keys) : 0;
+             FcitxKeySym sym = FcitxKey_None;
+             if (i < 10) {
+                 if (i < num_select_keys)
+@@ -332,8 +331,7 @@
+     FcitxInputState *input = FcitxInstanceGetInputState(rime->owner);
+     FcitxInstanceCleanInputWindow(rime->owner);
+ 
+-    RimeContext context = {0};
+-    RIME_STRUCT_INIT(RimeContext, context);
++    RIME_STRUCT(RimeContext, context);
+     if (!RimeGetContext(rime->session_id, &context) ||
+         context.composition.length == 0) {
+         RimeFreeContext(&context);
+@@ -382,7 +380,8 @@
+         char strChoose[11];
+         strChoose[10] = '\0';
+         FcitxCandidateWordSetPageSize(candList, 10);
+-        int num_select_keys = strlen(context.menu.select_keys);
++        int num_select_keys = context.menu.select_keys ?
++            strlen(context.menu.select_keys) : 0;
+         int i;
+         for (i = 0; i < context.menu.num_candidates; ++i) {
+             FcitxCandidateWord candWord;
+@@ -438,8 +437,7 @@
+     if (!RimeFindSession(rime->session_id)) {
+         rime->session_id = RimeCreateSession();
+     }
+-    RimeStatus status = {0};
+-    RIME_STRUCT_INIT(RimeStatus, status);
++    RIME_STRUCT(RimeStatus, status);
+     if (RimeGetStatus(rime->session_id, &status)) {
+         char* text = "";
+         if (status.is_disabled) {

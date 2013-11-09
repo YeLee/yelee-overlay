@@ -21,13 +21,14 @@ RESTRICT="mirror"
 RDEPEND=">=app-i18n/fcitx-4.2.8.1
 	x11-libs/libnotify
 	|| (
-		app-i18n/librime[minimal]
+		>=app-i18n/librime-1.0.0_pre20131105[minimal]
 		app-i18n/rime-data
 		)"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.2.2-r1-fix-invalid-sessionid.patch"
+	epatch "${FILESDIR}/rime_api_v1.patch"
 	epatch_user
 }
 
