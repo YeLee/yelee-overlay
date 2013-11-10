@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-TREE_VER="33b96f81f79f95ecb2d5c06883bb3dee0e6d482b"
+TREE_VER="19ad5e49c773c781d3f01351667596cb8ff62930"
 DESCRIPTION="Rime support for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://codeload.github.com/fcitx/fcitx-rime/zip/${TREE_VER} -> ${P}.zip"
@@ -27,7 +27,6 @@ RDEPEND=">=app-i18n/fcitx-4.2.8.1
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.3.0-cmake-build-fix.patch"
 	epatch "${FILESDIR}/${PN}-0.3.0-fix-ui-icon.patch"
 	epatch_user
 }
