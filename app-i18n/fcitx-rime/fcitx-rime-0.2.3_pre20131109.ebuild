@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-TREE_VER="f20061c2d3862b9beff4834745013cd678133fba"
+TREE_VER="33b96f81f79f95ecb2d5c06883bb3dee0e6d482b"
 DESCRIPTION="Rime support for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://codeload.github.com/fcitx/fcitx-rime/zip/${TREE_VER} -> ${P}.zip"
@@ -21,14 +21,13 @@ RESTRICT="mirror"
 RDEPEND=">=app-i18n/fcitx-4.2.8.1
 	x11-libs/libnotify
 	|| (
-		>=app-i18n/librime-1.0.0_pre20131105[minimal]
+		>=app-i18n/librime-1.0.0_pre20131109[minimal]
 		app-i18n/rime-data
 		)"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.2.2-r1-fix-invalid-sessionid.patch"
-	epatch "${FILESDIR}/rime_api_v1.patch"
 	epatch_user
 }
 
