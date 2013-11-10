@@ -21,13 +21,14 @@ RESTRICT="mirror"
 RDEPEND=">=app-i18n/fcitx-4.2.8.1
 	x11-libs/libnotify
 	|| (
-		>=app-i18n/librime-1.0.0_pre20131109[minimal]
+		>=app-i18n/librime-1.0.0[minimal]
 		app-i18n/rime-data
 		)"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.2.3_pre20131109-cmake-build-fix.patch"
+	epatch "${FILESDIR}/${PN}-0.3.0-cmake-build-fix.patch"
+	epatch "${FILESDIR}/${PN}-0.3.0-fix-ui-icon.patch"
 	epatch_user
 }
 

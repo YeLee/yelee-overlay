@@ -1,0 +1,11 @@
+--- a/src/fcitx-rime.c
++++ b/src/fcitx-rime.c
+@@ -474,7 +474,7 @@
+ 
+         return text;
+     }
+-    return "";
++    return "@rime-disabled";
+ }
+ 
+ static const char* FcitxRimeGetDeployIcon(void *arg)
