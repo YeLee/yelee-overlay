@@ -26,6 +26,11 @@ RDEPEND=">=app-i18n/fcitx-4.2.8.1
 		)"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-0.2.3_pre20131109-cmake-build-fix.patch"
+	epatch_user
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DRIME_DATA_DIR=/usr/share/rime-data
