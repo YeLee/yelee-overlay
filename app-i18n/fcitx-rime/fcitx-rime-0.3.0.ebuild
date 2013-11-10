@@ -22,7 +22,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.8.1
 	x11-libs/libnotify
 	|| (
 		>=app-i18n/librime-1.0.0[minimal]
-		app-i18n/rime-data
+		>=app-i18n/rime-data-0.30
 		)"
 DEPEND="${RDEPEND}"
 

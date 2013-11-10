@@ -19,4 +19,4 @@ RESTRICT="mirror"
 
 DEPEND="( >=app-i18n/librime-1.0.0[-minimal] )"
 RDEPEND="${DEPEND}"
-S=${WORKDIR}/${PN}-${TREE_VER}
+S=${WORKDIR}/brise-${TREE_VER}
