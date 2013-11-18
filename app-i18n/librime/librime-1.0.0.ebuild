@@ -27,16 +27,21 @@ RDEPEND="app-i18n/opencc
 DEPEND="${RDEPEND}
 	minimal? ( !app-i18n/rime-data )"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.9.9-build-data-fix.patch"
-	epatch_user
-}
-
 src_configure() {
+	if use minimal ; then
+		rime_deployer --build ${S}/data/minimal || die
+	fi
 	local mycmakeargs=(
 		$(cmake-utils_use_build static-libs STATIC)
-		$(cmake-utils_use_build minimal DATA)
-		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
 	)
 	cmake-utils_src_configure
 }
+
+src_install() {
+	if use minimal ; then
+		insinto /usr/share/rime-data
+		doins ${S}/data/minimal/* || die
+	fi
+	cmake-utils_src_install
+}
+
