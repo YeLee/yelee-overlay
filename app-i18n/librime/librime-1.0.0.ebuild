@@ -28,13 +28,17 @@ DEPEND="${RDEPEND}
 	minimal? ( !app-i18n/rime-data )"
 
 src_configure() {
-	if use minimal ; then
-		rime_deployer --build ${S}/data/minimal || die
-	fi
 	local mycmakeargs=(
 		$(cmake-utils_use_build static-libs STATIC)
 	)
 	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
+	if use minimal ; then
+		${BUILD_DIR}/bin/rime_deployer --build ${S}/data/minimal || die
+	fi
 }
 
 src_install() {
