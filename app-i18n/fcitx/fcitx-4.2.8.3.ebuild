@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils eutils gnome2-utils fdo-mime multilib readme.gentoo
 
-DESCRIPTION="Flexible Contect-aware Input Tool with eXtension support"
+DESCRIPTION="A Flexible Input Method Framework"
 HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="http://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 
