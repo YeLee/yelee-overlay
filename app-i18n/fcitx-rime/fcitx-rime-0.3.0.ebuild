@@ -37,3 +37,11 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 }
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+}
