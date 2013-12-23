@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib
 
-TREE_VER="d362e5e8f55f1901ab8b1da00805950d91f57d92"
+TREE_VER="6732856aee97ee4300eedde553d1d7f95fec1893"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
@@ -25,7 +25,13 @@ RDEPEND="app-i18n/opencc
 	sys-libs/zlib
 	x11-proto/xproto"
 DEPEND="${RDEPEND}
+	>=sys-devel/gcc-4.8.0
 	minimal? ( !app-i18n/rime-data )"
+
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-1.1.0-boost_build_fix.patch"
+	epatch_user
+}
 
 src_configure() {
 	local mycmakeargs=(

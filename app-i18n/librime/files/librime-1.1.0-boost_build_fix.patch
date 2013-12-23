@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,7 @@
+ endif(MSVC)
+ find_package(Boost 1.46.0 REQUIRED COMPONENTS filesystem regex signals system)
+ if(Boost_FOUND)
++  add_definitions(-DBOOST_NO_CXX11_SCOPED_ENUMS)
+   include_directories(${Boost_INCLUDE_DIRS})
+   link_directories(${Boost_LIBRARY_DIRS})
+ endif(Boost_FOUND)
