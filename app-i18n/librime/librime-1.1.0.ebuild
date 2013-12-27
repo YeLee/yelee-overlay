@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib
 
-TREE_VER="6732856aee97ee4300eedde553d1d7f95fec1893"
+TREE_VER="24938f623dca85a4b1aa00751bebfb2637ae53b2"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
