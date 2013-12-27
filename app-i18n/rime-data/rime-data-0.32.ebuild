@@ -5,16 +5,18 @@
 EAPI=5
 
 inherit vcs-snapshot
-MY_P=brise-${PV}
+
+TREE_VER="fde8728e6c73d6b72e444aba921b932ebcbeadd6"
 DESCRIPTION="Data resources for Rime Input Method Engine"
 HOMEPAGE="http://code.google.com/p/rimeime/"
-SRC_URI="http://rimeime.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://codeload.github.com/lotem/brise/zip/${TREE_VER} -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="mirror"
 
-DEPEND="( app-i18n/librime )"
+DEPEND="( >=app-i18n/librime-1.0.0[-minimal] )"
 RDEPEND="${DEPEND}"
-S="${WORKDIR}"/${MY_P}
+S=${WORKDIR}/brise-${TREE_VER}
