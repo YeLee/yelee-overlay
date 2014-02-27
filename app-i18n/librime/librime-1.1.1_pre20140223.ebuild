@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib versionator toolchain-funcs
 
-TREE_VER="7ddffbc7a6a3c80d63f3559694863a6e3e3896c1"
+TREE_VER="8d7aa5a4d46caf9fc9e858540b13fa08a5bbc0bd"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
