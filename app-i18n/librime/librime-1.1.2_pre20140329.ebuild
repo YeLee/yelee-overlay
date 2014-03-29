@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib versionator toolchain-funcs
 
-TREE_VER="8d7aa5a4d46caf9fc9e858540b13fa08a5bbc0bd"
+TREE_VER="a5e44b2af7333ef19fc45ee5e8dc3d34f15d6a58"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
@@ -15,6 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs minimal test"
+RESTRICT="mirror"
 S=${WORKDIR}/${PN}-${TREE_VER}
 
 RDEPEND="app-i18n/opencc
