@@ -14,12 +14,12 @@ SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs minimal test"
+IUSE="static-libs minimal test +glog"
 RESTRICT="mirror"
 S=${WORKDIR}/${PN}-${TREE_VER}
 
 RDEPEND="app-i18n/opencc
-	dev-cpp/glog
+    glog? ( dev-cpp/glog )
 	>=dev-cpp/yaml-cpp-0.5.0
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
@@ -47,6 +47,7 @@ src_configure() {
 		-DBUILD_DATA=OFF
 		-DBUILD_SEPARATE_LIBS=OFF
 		$(cmake-utils_use_build test TEST)
+		$(cmake-utils_use_enable glog LOGGING)
 		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
 	)
 	cmake-utils_src_configure

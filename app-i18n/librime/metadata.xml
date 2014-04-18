@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cjk</herd>
+  <use>
+    <flag name='static-libs'>Build Rime as shared library</flag>
+    <flag name='minimal'>Replace <pkg>app-i18n/rime-data</pkg></flag> with the built-in data</flag>
+    <flag name='test'>Build and run tests</flag>
+    <flag name='glog'>Enable logging with <pkg>dev-cpp/glog</pkg></flag>
+  </use>
+</pkgmetadata>
