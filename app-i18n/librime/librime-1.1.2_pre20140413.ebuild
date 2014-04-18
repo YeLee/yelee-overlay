@@ -19,7 +19,7 @@ RESTRICT="mirror"
 S=${WORKDIR}/${PN}-${TREE_VER}
 
 RDEPEND="app-i18n/opencc
-    glog? ( dev-cpp/glog )
+	glog? ( dev-cpp/glog )
 	>=dev-cpp/yaml-cpp-0.5.0
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
