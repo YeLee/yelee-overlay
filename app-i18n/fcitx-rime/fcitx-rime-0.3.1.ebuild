@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils gnome2-utils
 
-TREE_VER="b18f8cf8230be9e03095f783819460a69551134c"
+TREE_VER="286aac9541b1ba17871fd1aadb66f73a3c40ce14"
 DESCRIPTION="Rime support for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://codeload.github.com/fcitx/fcitx-rime/zip/${TREE_VER} -> ${P}.zip"
