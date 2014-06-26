@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib versionator toolchain-funcs
 
-TREE_VER="30979c830900cde86920151140b219c55b3c0e25"
+TREE_VER="43c53d5e097ef13d0a94288ce9352dbd060f8f74"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
@@ -21,6 +21,7 @@ S=${WORKDIR}/${PN}-${TREE_VER}
 RDEPEND="app-i18n/opencc
 	glog? ( dev-cpp/glog )
 	>=dev-cpp/yaml-cpp-0.5.0
+	dev-cpp/marisa
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
 	sys-libs/zlib
@@ -37,7 +38,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.1.0-boost_build_fix.patch"
 	epatch_user
 }
 
@@ -46,6 +46,7 @@ src_configure() {
 		$(cmake-utils_use_build static-libs STATIC)
 		-DBUILD_DATA=OFF
 		-DBUILD_SEPARATE_LIBS=OFF
+		-DBOOST_USE_CXX11=OFF
 		$(cmake-utils_use_build test TEST)
 		$(cmake-utils_use_enable glog LOGGING)
 		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
@@ -56,14 +57,16 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 	if use minimal ; then
-		${BUILD_DIR}/bin/rime_deployer --build ${S}/data/minimal || die
+		${BUILD_DIR}/bin/rime_deployer --build ${BUILD_DIR}/bin || die
 	fi
 }
 
 src_install() {
 	if use minimal ; then
 		insinto /usr/share/rime-data
-		doins ${S}/data/minimal/* || die
+		doins ${BUILD_DIR}/bin/*.yaml || die
+		doins ${BUILD_DIR}/bin/*.bin || die
+		doins ${BUILD_DIR}/bin/essay.txt || die
 	fi
 	cmake-utils_src_install
 }
