@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib versionator toolchain-funcs
 
-TREE_VER="f16b686efbe6bfe50c1fbb3c5b318c279fc16ec0"
+TREE_VER="75f3e877259c96fba78b2bc773214b4bb9034331"
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://code.google.com/p/rimeime/"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
@@ -18,7 +18,7 @@ IUSE="static-libs minimal test +glog"
 RESTRICT="mirror"
 S=${WORKDIR}/${PN}-${TREE_VER}
 
-RDEPEND="app-i18n/opencc
+RDEPEND=">=app-i18n/opencc-1.0.1-r1
 	glog? ( dev-cpp/glog )
 	>=dev-cpp/yaml-cpp-0.5.0
 	dev-cpp/marisa
