@@ -20,6 +20,7 @@ DEPEND=""
 RDEPEND=""
 
 DOCS="AUTHORS LICENSE NEWS.md README.md"
+S=${WORKDIR}/${PN}-${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-${PVR}.patch"
