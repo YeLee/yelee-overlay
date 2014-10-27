@@ -8,7 +8,7 @@ inherit cmake-utils multilib eutils
 
 DESCRIPTION="Libraries for conversion between Traditional and Simplified Chinese."
 HOMEPAGE="https://github.com/BYVoid/OpenCC"
-SRC_URI="http://dl.bintray.com/byvoid/opencc/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://dl.bintray.com/byvoid/opencc/${PN}-${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
