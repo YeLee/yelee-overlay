@@ -1,5 +1,5 @@
---- a\src\DictEntry.hpp
-+++ b\src\DictEntry.hpp
+--- a/src/DictEntry.hpp
++++ b/src/DictEntry.hpp
 @@ -34,6 +34,8 @@
  
    virtual const char* Key() const = 0;
