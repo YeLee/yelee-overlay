@@ -21,10 +21,10 @@ S=${WORKDIR}/${PN}-${TREE_VER}
 RDEPEND=">=app-i18n/opencc-1.0.1-r1
 	glog? ( dev-cpp/glog )
 	>=dev-cpp/yaml-cpp-0.5.0
-	dev-cpp/marisa
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
 	dev-libs/leveldb
+	dev-libs/marisa
 	sys-libs/zlib
 	x11-proto/xproto"
 DEPEND="${RDEPEND}
