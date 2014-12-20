@@ -24,6 +24,7 @@ RDEPEND=">=app-i18n/opencc-1.0.1-r1
 	dev-cpp/marisa
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
+	dev-libs/leveldb
 	sys-libs/zlib
 	x11-proto/xproto"
 DEPEND="${RDEPEND}
