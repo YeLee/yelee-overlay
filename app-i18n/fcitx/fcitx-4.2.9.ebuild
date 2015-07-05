@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,9 +12,10 @@ SRC_URI="http://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+X +autostart +cairo +dbus debug +enchant gtk gtk3 icu introspection lua
 nls opencc +pango qt4 static-libs +table test +xml"
+REQUIRED_USE="cairo? ( X ) gtk? ( X ) gtk3? ( X ) qt4? ( X )"
 RESTRICT="mirror"
 
 RDEPEND="
@@ -41,7 +42,8 @@ RDEPEND="
 	)
 	icu? ( dev-libs/icu:= )
 	introspection? ( dev-libs/gobject-introspection )
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:= )
+	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc )
 	qt4? (
 		dev-qt/qtdbus:4
@@ -55,7 +57,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/libintl
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	kde-frameworks/extra-cmake-modules
+	x11-libs/libxkbcommon"
 
 DOCS=( AUTHORS ChangeLog README THANKS TODO
 	doc/pinyin.txt doc/cjkvinput.txt doc/API.txt doc/Develop_Readme )
@@ -64,7 +67,7 @@ HTML_DOCS=( doc/wb_fh.htm )
 src_prepare() {
 	use autostart && DOC_CONTENTS="You have enabled the autostart USE flag,
 	which will let fcitx start automatically on XDG compatible desktop
-	environments, such as Gnome, KDE, LXDE, Razor-qt and Xfce. If you use
+	environments, such as Gnome, KDE, LXDE, LXQt and Xfce. If you use
 	~/.xinitrc to configure your desktop, make sure to include the fcitx
 	command to start it."
 	epatch_user
@@ -73,6 +76,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs="
 		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
+		-DSYSCONFDIR=/etc/
 		$(cmake-utils_use_enable X X11)
 		$(cmake-utils_use_enable autostart XDGAUTOSTART)
 		$(cmake-utils_use_enable cairo CAIRO)
