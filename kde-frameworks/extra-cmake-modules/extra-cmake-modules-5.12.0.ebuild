@@ -11,7 +11,7 @@ inherit kde5 python-any-r1
 
 DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
-SRC_URI="http://download.kde.org/stable/frameworks/5.0.0/${P}.tar.xz"
+SRC_URI="http://download.kde.org/stable/frameworks/${PV%.0}/${P}.tar.xz"
 
 LICENSE="BSD"
 KEYWORDS="amd64 arm arm64 x86"
