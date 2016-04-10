@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=5
-
 inherit cmake-utils
 
 DESCRIPTION="A gtk based configure tool for fcitx"
@@ -12,7 +11,7 @@ SRC_URI="http://download.fcitx-im.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gtk +gtk3"
 REQUIRED_USE="|| ( gtk gtk3 )"
 RESTRICT="mirror"
@@ -20,7 +19,7 @@ RESTRICT="mirror"
 RDEPEND=">=app-i18n/fcitx-4.2.8
 	dev-libs/glib:2
 	gtk? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3	)"
+	gtk3? ( x11-libs/gtk+:3 )"
 DEPEND="${RDEPEND}
 	app-text/iso-codes
 	dev-libs/libunique:1
