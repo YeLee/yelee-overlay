@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-TREE_VER="9351313f2f7f13a488b156d8a997165b718c2d11"
+TREE_VER="aad440d98aabc30717a0d48fb23da31776ba9605"
 DESCRIPTION="Rime support for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://codeload.github.com/fcitx/fcitx-rime/zip/${TREE_VER} -> ${P}.zip"

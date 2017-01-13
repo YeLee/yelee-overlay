@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib versionator toolchain-funcs
 
-TREE_VER="57bf14a386387402d93e1c0f27e597955442c514"
+TREE_VER="9c4fa8ab63438f8d184203e4a5079e5d3c744795"
 DESCRIPTION="Rime Input Method Engine - the core library"
 HOMEPAGE="https://bintray.com/lotem/rime/librime"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
