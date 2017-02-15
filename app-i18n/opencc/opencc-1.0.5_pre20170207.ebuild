@@ -21,7 +21,7 @@ DEPEND=""
 RDEPEND=""
 
 DOCS="AUTHORS LICENSE NEWS.md README.md"
-S=${WORKDIR}/${PN}-${TREE_VER}
+S=${WORKDIR}/OpenCC-${TREE_VER}
 
 src_prepare() {
 	epatch_user
