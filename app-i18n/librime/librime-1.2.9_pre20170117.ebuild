@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,9 +6,9 @@ EAPI=5
 
 inherit cmake-utils multilib versionator toolchain-funcs
 
-TREE_VER="88c341f7abb33502065adbda5fc9b1c506ea6b45"
-DESCRIPTION="Rime Input Method Engine library"
-HOMEPAGE="http://code.google.com/p/rimeime/"
+TREE_VER="2ab76bc10d814a8c67949ecb521fad543de2493d"
+DESCRIPTION="Rime Input Method Engine - the core library"
+HOMEPAGE="https://bintray.com/lotem/rime/librime"
 SRC_URI="https://codeload.github.com/lotem/librime/zip/${TREE_VER} -> ${P}.zip"
 
 LICENSE="GPL-3"
@@ -18,11 +18,12 @@ IUSE="static-libs minimal test +glog"
 RESTRICT="mirror"
 S=${WORKDIR}/${PN}-${TREE_VER}
 
-RDEPEND="app-i18n/opencc
+RDEPEND=">=app-i18n/opencc-1.0.1-r1
 	glog? ( dev-cpp/glog )
 	>=dev-cpp/yaml-cpp-0.5.0
 	dev-db/kyotocabinet
 	>=dev-libs/boost-1.46.0[threads(+)]
+	dev-libs/leveldb
 	dev-libs/marisa
 	sys-libs/zlib
 	x11-proto/xproto"

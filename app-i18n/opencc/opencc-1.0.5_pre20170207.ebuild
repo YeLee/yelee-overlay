@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,9 +6,10 @@ EAPI=5
 
 inherit cmake-utils multilib eutils
 
+TREE_VER="7fdaa43f1c548cc53ab9c7b59a697851060f4f46"
 DESCRIPTION="Libraries for conversion between Traditional and Simplified Chinese."
 HOMEPAGE="https://github.com/BYVoid/OpenCC"
-SRC_URI="http://dl.bintray.com/byvoid/opencc/${PN}-${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://codeload.github.com/BYVoid/OpenCC/zip/${TREE_VER} -> ${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -20,7 +21,7 @@ DEPEND=""
 RDEPEND=""
 
 DOCS="AUTHORS LICENSE NEWS.md README.md"
-S=${WORKDIR}/${PN}-${PV}
+S=${WORKDIR}/${PN}-${TREE_VER}
 
 src_prepare() {
 	epatch_user
