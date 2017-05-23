@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils multilib eutils
 
-TREE_VER="7fdaa43f1c548cc53ab9c7b59a697851060f4f46"
+TREE_VER="fafcd6a160664b26258bb873f860a16f6c9d123a"
 DESCRIPTION="Libraries for conversion between Traditional and Simplified Chinese."
 HOMEPAGE="https://github.com/BYVoid/OpenCC"
 SRC_URI="https://codeload.github.com/BYVoid/OpenCC/zip/${TREE_VER} -> ${P}.zip"
